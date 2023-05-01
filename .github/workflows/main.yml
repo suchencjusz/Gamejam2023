@@ -45,10 +45,23 @@ jobs:
           zip -r ../../StandaloneWindows64.zip .
           popd
 
-      - name: Release
+      - name: Generate release tag
+        id: tag
+        run: |
+          echo "::set-output name=release_tag::UserBuild_$(date +"%Y.%m.%d_%H-%M")"
+      - name: Release user firmware
         uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          if: startsWith(github.ref, 'refs/tags/')
-          files: StandaloneWindows64.zip
-          name: Release ${{ github.ref }}
+          tag_name: ${{ steps.tag.outputs.release_tag }}
+          files: |
+            StandaloneWindows64.zip
+
+      # - name: Release
+      #   uses: softprops/action-gh-release@v1
+      #   with:
+      #     if: startsWith(github.ref, 'refs/tags/')
+      #     files: StandaloneWindows64.zip
+      #     name: Release ${{ github.ref }}
           
