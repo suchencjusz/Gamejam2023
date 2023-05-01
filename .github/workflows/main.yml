@@ -31,10 +31,22 @@ jobs:
         with:
           projectPath: 'The Maze/'
           targetPlatform: StandaloneWindows
-          versioning: Semantic
+          allowDirtyBuild: true
 
       # Output
       - uses: actions/upload-artifact@v2
         with:
           name: Build
           path: build
+          
+      - name: Zip build
+        run: |
+          pushd build/StandaloneWindows64
+          zip -r ../../StandaloneWindows64.zip .
+          popd
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: StandaloneWindows64.zip
+          name: Release ${{ github.ref }}
