@@ -21,8 +21,32 @@ public class RoomSpawner : MonoBehaviour
     private int rand;
     private bool spawned = false;
 
+    public float waitTime = 4f;
+
+    IEnumerator RemoveClosedBuggedAfter3Seconds()
+    {
+        yield return new WaitForSeconds(3);
+
+        GameObject[] closedRooms = GameObject.FindGameObjectsWithTag("Closed");
+
+        GameObject starter = GameObject.FindGameObjectWithTag("Starter");
+
+        foreach (GameObject closedRoom in closedRooms)
+        {
+            if (closedRoom.transform.position == starter.transform.position)
+            {
+                Destroy(closedRoom);
+            }
+        }
+    }
+
     void Start()
     {
+        // remove objects with tag Closed after 3 seconds with same transform position
+
+        StartCoroutine(RemoveClosedBuggedAfter3Seconds());
+
+        Destroy(gameObject, waitTime);
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
         Invoke("Spawn", 0.1f);
     }

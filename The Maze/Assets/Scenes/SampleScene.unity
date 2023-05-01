@@ -407,6 +407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openingDirection: 0
+  waitTime: 4
 --- !u!1 &1261830394
 GameObject:
   m_ObjectHideFlags: 3
@@ -647,6 +648,10 @@ PrefabInstance:
     - target: {fileID: 1929295004722181842, guid: 44e8ea8924e3e0c4ba05cf01b0383715, type: 3}
       propertyPath: m_Name
       value: TRBL
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929295004722181842, guid: 44e8ea8924e3e0c4ba05cf01b0383715, type: 3}
+      propertyPath: m_TagString
+      value: Starter
       objectReference: {fileID: 0}
     - target: {fileID: 4952353300924959366, guid: 44e8ea8924e3e0c4ba05cf01b0383715, type: 3}
       propertyPath: m_RootOrder
