@@ -19,7 +19,7 @@ jobs:
           path: The Maze
           key: The Maze-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
-            Library-
+            The Maze
 
       # Build
       - name: Build project
