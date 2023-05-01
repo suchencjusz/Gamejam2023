@@ -25,7 +25,7 @@ public class RoomSpawner : MonoBehaviour
 
     IEnumerator RemoveClosedBuggedAfter3Seconds()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
 
         GameObject[] closedRooms = GameObject.FindGameObjectsWithTag("Closed");
 
@@ -87,7 +87,7 @@ public class RoomSpawner : MonoBehaviour
     {
         if (other.CompareTag("SpawnPoint"))
         {
-            if(other.GetComponent<RoomSpawner>().spawned == false && spawned == false)
+            if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false)
             {
                 // Spawn walls blocking the door.
                 Instantiate(templates.closedRoom, transform.position, Quaternion.identity);
