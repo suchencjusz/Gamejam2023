@@ -31,7 +31,6 @@ jobs:
         with:
           projectPath: 'The Maze/'
           targetPlatform: StandaloneWindows
-          customImage: 'unityci/editor:windows-2021.3.24f1-universal-windows-platform-1.1.2'
           versioning: Semantic
 
       # Output
