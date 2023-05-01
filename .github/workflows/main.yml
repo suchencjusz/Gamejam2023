@@ -14,12 +14,12 @@ jobs:
           lfs: true
 
 #       Cache
-      - uses: actions/cache@v2
-        with:
-          path: The Maze
-          key: The Maze-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-          restore-keys: |
-            The Maze
+#      - uses: actions/cache@v2
+#        with:
+ #         path: The Maze
+ #         key: The Maze-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+ #         restore-keys: |
+  #          The Maze
 
       # Build
       - name: Build project
