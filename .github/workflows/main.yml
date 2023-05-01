@@ -1,6 +1,6 @@
 name: Actions 😎
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   build:
@@ -14,12 +14,12 @@ jobs:
           lfs: true
 
 #       Cache
-#      - uses: actions/cache@v2
-#        with:
- #         path: The Maze
- #         key: The Maze-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
- #         restore-keys: |
-  #          The Maze
+      - uses: actions/cache@v2
+        with:
+          path: The Maze
+          key: The Maze-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            The Maze
 
       # Build
       - name: Build project
@@ -41,7 +41,7 @@ jobs:
           
       - name: Zip build
         run: |
-          pushd build/StandaloneWindows64
+          pushd build
           zip -r ../../StandaloneWindows64.zip .
           popd
 
