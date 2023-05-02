@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class LevelsManager : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class LevelsManager : MonoBehaviour
     // public LabirynthConfig LabirynthConfig;
     public GameObject LabirynthGenrator;
     public GameObject LabirynthGenratorPrefab;
+
+    public GameObject pathfinder;
 
     public List<GameObject> rooms;
 
@@ -27,6 +30,10 @@ public class LevelsManager : MonoBehaviour
         );
 
         rooms = LabirynthGenrator.GetComponentInChildren<RoomTemplates>().rooms;
+
+        AstarPath astarPath = pathfinder.GetComponent<AstarPath>();
+        astarPath.Scan();
+
         StartCoroutine(TeleportAfterSecond());
 
     }
