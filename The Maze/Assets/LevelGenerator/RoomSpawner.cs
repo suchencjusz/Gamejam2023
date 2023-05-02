@@ -91,7 +91,10 @@ public class RoomSpawner : MonoBehaviour
             {
                 // Spawn walls blocking the door.
                 Instantiate(templates.closedRoom, transform.position, Quaternion.identity);
-                Destroy(gameObject);
+                if (other.CompareTag("Player"))
+                {
+                    Destroy(gameObject);
+                }
             }
             spawned = true;
         }
