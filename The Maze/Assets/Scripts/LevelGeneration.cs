@@ -27,7 +27,7 @@ public class LevelGeneration : MonoBehaviour
         int randStartingPos = Random.Range(0, startingPositions.Length);
         transform.position = startingPositions[randStartingPos].position;
         Instantiate(rooms[0], transform.position, Quaternion.identity);
-
+        AudioManager.Instance.PlaySound("buttonClick");
         direction = Random.Range(1, 6);
     }
 
